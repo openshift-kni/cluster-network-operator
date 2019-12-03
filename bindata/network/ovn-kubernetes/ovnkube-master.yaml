@@ -63,6 +63,7 @@ spec:
 
           if [[ "${NODE_INDEX}" != "0" ]]; then
             # IPv6 HACK: only come up on node 0
+            sleep 9999999
             exit 0
           fi
 
@@ -366,6 +367,7 @@ spec:
 
           if [[ "${NODE_INDEX}" != "0" ]]; then
             # IPv6 HACK: only come up on node 0
+            sleep 9999999
             exit 0
           fi
 
