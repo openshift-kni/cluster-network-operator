@@ -365,12 +365,6 @@ spec:
             fi
           done
 
-          if [[ "${NODE_INDEX}" != "0" ]]; then
-            # IPv6 HACK: only come up on node 0
-            sleep 9999999
-            exit 0
-          fi
-
           OVN_NODE_IPS_ARRAY=({{.OVN_NODE_IPS}})
           nb_addr_list=""
           sb_addr_list=""
