@@ -142,10 +142,9 @@ spec:
           THIS_NODE_IP="${OVN_NODE_IPS_ARRAY[${NODE_INDEX}]}"
 
           if [[ "${NODE_INDEX}" != "0" ]]; then
-            # We want to ensure that the leader starts first.
-            # This is a hack that should be replaced by a real
-            # check for the leader to be up.
-            sleep 300
+            # https://bugzilla.redhat.com/show_bug.cgi?id=1779381
+            # Don't even try to start the 2nd and 3rd database instances right now ...
+            sleep 99999999
           fi
 
           if [[ "$THIS_NODE_IP" == "$MASTER_NODE_IP" ]]; then
@@ -255,10 +254,9 @@ spec:
           THIS_NODE_IP="${OVN_NODE_IPS_ARRAY[${NODE_INDEX}]}"
 
           if [[ "${NODE_INDEX}" != "0" ]]; then
-            # We want to ensure that the leader starts first.
-            # This is a hack that should be replaced by a real
-            # check for the leader to be up.
-            sleep 300
+            # https://bugzilla.redhat.com/show_bug.cgi?id=1779381
+            # Don't even try to start the 2nd and 3rd database instances right now ...
+            sleep 99999999
           fi
 
           if [[ "$THIS_NODE_IP" == "$MASTER_NODE_IP" ]]; then
