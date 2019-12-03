@@ -93,6 +93,10 @@ spec:
         env:
         - name: OVN_LOG_LEVEL
           value: info 
+        - name: K8S_NODE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
         volumeMounts:
         - mountPath: /etc/openvswitch/
           name: etc-openvswitch
