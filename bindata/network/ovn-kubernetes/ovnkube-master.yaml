@@ -52,6 +52,20 @@ spec:
             set +o allexport
           fi
 
+          OVN_NODES_ARRAY=({{.OVN_NODES}})
+          NODE_INDEX=0
+          for i in "${!OVN_NODES_ARRAY[@]}"; do
+            if [[ "${OVN_NODES_ARRAY[i]}" == "${K8S_NODE}" ]]; then
+              NODE_INDEX=${i}
+              break
+            fi
+          done
+
+          if [[ "${NODE_INDEX}" != "0" ]]; then
+            # IPv6 HACK: only come up on node 0
+            exit 0
+          fi
+
           OVN_NODE_IPS_ARRAY=({{.OVN_NODE_IPS}})
 
           nb_addr_list=""
@@ -339,6 +353,20 @@ spec:
             if [[ -n "{{.OVNHybridOverlayNetCIDR}}" ]]; then
               hybrid_overlay_flags="${hybrid_overlay_flags} --hybrid-overlay-cluster-subnets={{.OVNHybridOverlayNetCIDR}}"
             fi
+          fi
+
+          OVN_NODES_ARRAY=({{.OVN_NODES}})
+          NODE_INDEX=0
+          for i in "${!OVN_NODES_ARRAY[@]}"; do
+            if [[ "${OVN_NODES_ARRAY[i]}" == "${K8S_NODE}" ]]; then
+              NODE_INDEX=${i}
+              break
+            fi
+          done
+
+          if [[ "${NODE_INDEX}" != "0" ]]; then
+            # IPv6 HACK: only come up on node 0
+            exit 0
           fi
 
           OVN_NODE_IPS_ARRAY=({{.OVN_NODE_IPS}})
