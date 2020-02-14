@@ -62,7 +62,7 @@ spec:
           privileged: true
         env:
         - name: OVN_LOG_LEVEL
-          value: info
+          value: dbg
         - name: K8S_NODE
           valueFrom:
             fieldRef:
@@ -148,7 +148,7 @@ spec:
         - name: KUBERNETES_SERVICE_HOST
           value: "{{.KUBERNETES_SERVICE_HOST}}"
         - name: OVN_KUBE_LOG_LEVEL
-          value: "4"
+          value: "5"
         - name: K8S_NODE
           valueFrom:
             fieldRef:
